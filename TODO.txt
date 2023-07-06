@@ -1,0 +1,4 @@
+surfaceAreaOfBox = 2*l*w + 2*w*h + 2*h*l
+and areaOfSmallestSide
+
+find square feet of paper that is required
