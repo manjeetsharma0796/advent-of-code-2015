@@ -3,9 +3,15 @@ class Elf {
     this.santa = santa;
   }
 
-  navigate(instruction) {
-    if (instruction === '^') {
-      this.santa.moveUp();
+  navigate([...instructions]) {
+    for (const instruction of instructions) {
+      if (instruction === '^') {
+        this.santa.moveUp();
+      }
+
+      if (instruction === 'v') {
+        this.santa.moveDown();
+      }
     }
   }
 }
