@@ -1,5 +1,41 @@
-const calculatePaperArea = (dimension) => {
-  return 0;
+const calculateAllSidesArea = (length, width, height) => {
+  const baseArea = length * width;
+  const lengthSideArea = length * height;
+  const widthSideArea = width * height;
+  return { baseArea, lengthSideArea, widthSideArea };
 }
 
-exports.calculatePaperArea = calculatePaperArea;
+const getMinimumArea = (length, width, height) => {
+  const { baseArea, lengthSideArea, widthSideArea } = calculateAllSidesArea(length, width, height);
+  return Math.min(baseArea, lengthSideArea, widthSideArea);
+}
+
+const calculateSurfaceAreaOfBox = (length, width, height) => {
+  return 2 * (length * width + width * height + height * length);
+}
+
+const calculatePaperArea = (rawBoxDimension) => {
+  const [length, width, height]  = rawBoxDimension.split('x')
+  .map(numberInString => parseInt(numberInString));
+  const minimumArea = getMinimumArea(length, width, height);
+
+  const surfaceAreaOfBox = calculateSurfaceAreaOfBox
+  (length, width, height);
+  const paperArea = surfaceAreaOfBox + minimumArea;
+  
+  return paperArea;
+}
+
+const calculateTotalPaperArea = (rawBoxDimensionsSet) => {
+  rawBoxDimensionsSet.reduce((totalPaperArea, rawBoxDimension) => {
+    totalPaperArea += calculatePaperArea(rawBoxDimension);
+    return totalPaperArea;
+  }, 0);
+}
+
+module.exports = {
+  calculateSurfaceAreaOfBox,
+  calculateAllSidesArea,
+  calculatePaperArea,
+  calculateTotalPaperArea
+}
