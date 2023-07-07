@@ -9,7 +9,6 @@ describe('Elf', () => {
       const santa = new Santa();
       const elf = new Elf(santa);
       elf.navigate('^');
-      console.log(santa.status);
 
       const actual = santa.status;
       const expected = { x: 0, y: 1 };
@@ -50,5 +49,18 @@ describe('Elf', () => {
 
       deepStrictEqual(actual, expected);
     });
+
+
   });
+  describe('log', () => {
+    it('Should be empty log when no instruction provided', () => {
+      const santa = new Santa();
+      const elf = new Elf(santa);
+
+      const actual = elf.logs;
+      const expected = {};
+
+      deepStrictEqual(actual, expected);
+    });
+  })
 });
