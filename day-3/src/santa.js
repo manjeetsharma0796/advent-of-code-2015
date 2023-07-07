@@ -6,6 +6,10 @@ class Santa {
   moveUp() {
     this.currentCoordinate.y += 1;
   }
+
+  moveDown() {
+    this.currentCoordinate.y -= 1;
+  }
   
   get status() {
     const currentCoordinate = this.currentCoordinate;

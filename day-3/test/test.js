@@ -36,4 +36,27 @@ describe('Santa', () => {
       deepStrictEqual(actual, expected);
     });
   });
+
+  describe('moveDown', () => {
+    it('Should move santa to south direction', () => {
+      const santa = new Santa();
+      santa.moveDown();
+
+      const actual = santa.status;
+      const expected = { x: 0, y: -1 };
+
+      deepStrictEqual(actual, expected);
+    });
+
+    it('Should move santa to south direction twice', () => {
+      const santa = new Santa();
+      santa.moveDown();
+      santa.moveDown();
+
+      const actual = santa.status;
+      const expected = { x: 0, y: -2 };
+
+      deepStrictEqual(actual, expected);
+    });
+  });
 });
