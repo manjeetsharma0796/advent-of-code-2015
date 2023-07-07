@@ -91,7 +91,7 @@ describe('calculateSurfaceAreaOfBox', () => {
 
     strictEqual(actual, expected);
   })
-})
+});
 
 describe('getMinimumArea', () => {
   it('Should give minimum area when different length, width and height provided', () => {
@@ -103,7 +103,7 @@ describe('getMinimumArea', () => {
     const expected = 2;
 
     strictEqual(actual, expected);
-  })
+  });
 
   it('Should give minimum area when same length, width and height provided', () => {
     const length = 1;
@@ -114,5 +114,5 @@ describe('getMinimumArea', () => {
     const expected = 1;
 
     strictEqual(actual, expected);
-  })
-})
+  });
+});

@@ -27,7 +27,7 @@ const calculatePaperArea = (rawBoxDimension) => {
 }
 
 const calculateTotalPaperArea = (rawBoxDimensionsSet) => {
-  rawBoxDimensionsSet.reduce((totalPaperArea, rawBoxDimension) => {
+  return rawBoxDimensionsSet.reduce((totalPaperArea, rawBoxDimension) => {
     totalPaperArea += calculatePaperArea(rawBoxDimension);
     return totalPaperArea;
   }, 0);
