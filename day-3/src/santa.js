@@ -15,6 +15,10 @@ class Santa {
     this.currentCoordinate.x += 1;
   }
 
+  moveLeft() {
+    this.currentCoordinate.x -= 1;
+  }
+
   get status() {
     const currentCoordinate = this.currentCoordinate;
     return currentCoordinate;
