@@ -70,24 +70,24 @@ describe('calculateAllSidesArea', () => {
 });
 
 describe('calculateSurfaceAreaOfBox', () => {
-  it('Should give 0 as surface area, when all area value are 0', () => {
-    const baseArea = 0;
-    const lengthSideArea = 0;
-    const widthSideArea = 0;
+  it('Should give 0 as surface area, when length,width and height are 0', () => {
+    const length = 0;
+    const width = 0;
+    const height = 0;
 
-    const actual = calculateSurfaceAreaOfBox(baseArea, widthSideArea, lengthSideArea);
+    const actual = calculateSurfaceAreaOfBox(length, width, height);
     const expected = 0;
 
     strictEqual(actual, expected);
   })
 
-  it('Should give 41 as surface area, when base area ', () => {
-    const baseArea = 0;
-    const lengthSideArea = 0;
-    const widthSideArea = 0;
+  it('Should give 42 as surface area, when length, width and height are 1, 1, 10 respectively', () => {
+    const length = 1;
+    const width = 1;
+    const height = 10;
 
-    const actual = calculateSurfaceAreaOfBox(baseArea, widthSideArea, lengthSideArea);
-    const expected = 0;
+    const actual = calculateSurfaceAreaOfBox(length,width, height);
+    const expected = 42;
 
     strictEqual(actual, expected);
   })
