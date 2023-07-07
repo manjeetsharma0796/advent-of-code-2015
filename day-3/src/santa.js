@@ -10,7 +10,11 @@ class Santa {
   moveDown() {
     this.currentCoordinate.y -= 1;
   }
-  
+
+  moveRight() {
+    this.currentCoordinate.x += 1;
+  }
+
   get status() {
     const currentCoordinate = this.currentCoordinate;
     return currentCoordinate;
