@@ -1,27 +1,21 @@
 const { describe, it } = require('node:test');
 const { strictEqual, deepStrictEqual } = require('assert');
-const { calculatePaperArea, calculateAllSidesArea, calculateSurfaceAreaOfBox, findSlackArea } = require('../src/paper-area-calculator');
+const { calculatePaperArea, calculateAllSidesArea, calculateSurfaceAreaOfBox, findSlackArea, calculateRibbonLength } = require('../src/paper-area-calculator');
 
 describe('calculatePaperArea', () => {
-  it('Should give total of 0 square feet for box with dimensions 0x0x0', () => {
+  it('Should be zero square feet for box with all dimensions 0', () => {
     const actual = calculatePaperArea('0x0x0');
     const expected = 0;
 
     strictEqual(actual, expected);
   });
 
-  it('Should give total of 58 square feet for box with dimensions 2x3x4', () => {
+  it('Should be non-zero for box with positive dimensions', () => {
     const actual = calculatePaperArea('2x3x4');
     const expected = 58;
 
-    strictEqual(actual, expected);
-  });
-
-  it('Should give total of 43 square feet for box with dimensions 1x1x10', () => {
-    const actual = calculatePaperArea('1x1x10');
-    const expected = 43;
-
-    strictEqual(actual, expected);
+    strictEqual(calculatePaperArea('2x3x4'), 58);
+    strictEqual(calculatePaperArea('1x1x10'), 43);
   });
 });
 
@@ -82,7 +76,7 @@ describe('calculateSurfaceAreaOfBox', () => {
   })
 
   it('Should give surface area, when length, width and height are provided', () => {
-    strictEqual(calculateSurfaceAreaOfBox(1,1,10), 42);
+    strictEqual(calculateSurfaceAreaOfBox(1, 1, 10), 42);
     strictEqual(calculateSurfaceAreaOfBox(2, 3, 4), 52)
   })
 });
@@ -110,3 +104,16 @@ describe('findSlackArea', () => {
     strictEqual(actual, expected);
   });
 });
+
+describe('calculateRibbonLength', () => {
+  it('Should be length as 0 as when non existing dimension provided', () => {
+    const rawBoxDimension = '0x0x0';
+    strictEqual(calculateRibbonLength(rawBoxDimension), 0);
+  });
+
+  it('Should be length as non-zero as when existing dimension provided', () => {
+    strictEqual(calculateRibbonLength('1x1x1'), 5);
+    strictEqual(calculateRibbonLength('2x3x4'), 34);
+    strictEqual(calculateRibbonLength('1x1x10'), 14);
+  });
+})

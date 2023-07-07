@@ -7,3 +7,11 @@ calculateSurfaceAreaOfBox(l,w,h)
 getMinArea(lwh) {
   
 }
+
+Feedback:
+
+Write test statement more general to cover test multiple cases
+Write test cases for smaller function when smaller function is created asap
+and then zoom out and pass the top level test
+
+Understand when to use 'be' and 'give' in test statement
