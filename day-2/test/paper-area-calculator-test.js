@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const { strictEqual, deepStrictEqual } = require('assert');
-const { calculatePaperArea, calculateAllSidesArea, calculateSurfaceAreaOfBox, getMinimumArea } = require('../src/paper-area-calculator');
+const { calculatePaperArea, calculateAllSidesArea, calculateSurfaceAreaOfBox, findSlackArea } = require('../src/paper-area-calculator');
 
 describe('calculatePaperArea', () => {
   it('Should give total of 0 square feet for box with dimensions 0x0x0', () => {
@@ -70,7 +70,7 @@ describe('calculateAllSidesArea', () => {
 });
 
 describe('calculateSurfaceAreaOfBox', () => {
-  it('Should give 0 as surface area, when length,width and height are 0', () => {
+  it('Should give 0 surface area, when length,width and height are 0', () => {
     const length = 0;
     const width = 0;
     const height = 0;
@@ -81,36 +81,30 @@ describe('calculateSurfaceAreaOfBox', () => {
     strictEqual(actual, expected);
   })
 
-  it('Should give 42 as surface area, when length, width and height are 1, 1, 10 respectively', () => {
-    const length = 1;
-    const width = 1;
-    const height = 10;
-
-    const actual = calculateSurfaceAreaOfBox(length,width, height);
-    const expected = 42;
-
-    strictEqual(actual, expected);
+  it('Should give surface area, when length, width and height are provided', () => {
+    strictEqual(calculateSurfaceAreaOfBox(1,1,10), 42);
+    strictEqual(calculateSurfaceAreaOfBox(2, 3, 4), 52)
   })
 });
 
-describe('getMinimumArea', () => {
-  it('Should give minimum area when different length, width and height provided', () => {
+describe('findSlackArea', () => {
+  it('Should give slack area when different length, width and height provided', () => {
     const length = 1;
     const width = 2;
     const height = 3;
 
-    const actual = getMinimumArea(length, width, height);
+    const actual = findSlackArea(length, width, height);
     const expected = 2;
 
     strictEqual(actual, expected);
   });
 
-  it('Should give minimum area when same length, width and height provided', () => {
+  it('Should give slack area when same length, width and height provided', () => {
     const length = 1;
     const width = 1;
     const height = 1;
 
-    const actual = getMinimumArea(length, width, height);
+    const actual = findSlackArea(length, width, height);
     const expected = 1;
 
     strictEqual(actual, expected);

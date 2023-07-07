@@ -5,7 +5,7 @@ const calculateAllSidesArea = (length, width, height) => {
   return { baseArea, lengthSideArea, widthSideArea };
 }
 
-const getMinimumArea = (length, width, height) => {
+const findSlackArea = (length, width, height) => {
   const { baseArea, lengthSideArea, widthSideArea } = calculateAllSidesArea(length, width, height);
   return Math.min(baseArea, lengthSideArea, widthSideArea);
 }
@@ -17,7 +17,7 @@ const calculateSurfaceAreaOfBox = (length, width, height) => {
 const calculatePaperArea = (rawBoxDimension) => {
   const [length, width, height] = rawBoxDimension.split('x')
     .map(numberInString => parseInt(numberInString));
-  const minimumArea = getMinimumArea(length, width, height);
+  const minimumArea = findSlackArea(length, width, height);
 
   const surfaceAreaOfBox = calculateSurfaceAreaOfBox
     (length, width, height);
@@ -35,7 +35,7 @@ const calculateTotalPaperArea = (rawBoxDimensionsSet) => {
 
 module.exports = {
   calculateAllSidesArea,
-  getMinimumArea,
+  findSlackArea,
   calculateSurfaceAreaOfBox,
   calculatePaperArea,
   calculateTotalPaperArea
