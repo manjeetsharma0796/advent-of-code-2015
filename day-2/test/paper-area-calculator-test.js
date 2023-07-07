@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const { strictEqual, deepStrictEqual } = require('assert');
-const { calculatePaperArea, calculateAllSidesArea, calculateSurfaceAreaOfBox } = require('../src/paper-area-calculator');
+const { calculatePaperArea, calculateAllSidesArea, calculateSurfaceAreaOfBox, getMinimumArea } = require('../src/paper-area-calculator');
 
 describe('calculatePaperArea', () => {
   it('Should give total of 0 square feet for box with dimensions 0x0x0', () => {
@@ -88,6 +88,30 @@ describe('calculateSurfaceAreaOfBox', () => {
 
     const actual = calculateSurfaceAreaOfBox(length,width, height);
     const expected = 42;
+
+    strictEqual(actual, expected);
+  })
+})
+
+describe('getMinimumArea', () => {
+  it('Should give minimum area when different length, width and height provided', () => {
+    const length = 1;
+    const width = 2;
+    const height = 3;
+
+    const actual = getMinimumArea(length, width, height);
+    const expected = 2;
+
+    strictEqual(actual, expected);
+  })
+
+  it('Should give minimum area when same length, width and height provided', () => {
+    const length = 1;
+    const width = 1;
+    const height = 1;
+
+    const actual = getMinimumArea(length, width, height);
+    const expected = 1;
 
     strictEqual(actual, expected);
   })
