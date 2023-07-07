@@ -36,13 +36,19 @@ const calculateTotalPaperArea = (rawBoxDimensionsSet) => {
 const calculateRibbonLength = (rawBoxDimension) => {
   const [length, width, height] = rawBoxDimension.split('x')
     .map(numberInString => parseInt(numberInString));
-  const smallSide = Math.min(length, height);
+  const largeSide = Math.max(length, width, height);
 
-  const ribbonToWrap = 2 * (smallSide + width);
+  const ribbonToWrap = 2 * ((length + width + height) - largeSide);
   const ribbonForBow = length * width * height;
 
-
   return ribbonToWrap + ribbonForBow;
+}
+
+const calculateTotalRibbonLength = (rawBoxDimensionsSet) => {
+  return rawBoxDimensionsSet.reduce((totalRibbonLength, rawBoxDimension) => {
+    totalRibbonLength += calculateRibbonLength(rawBoxDimension);
+    return totalRibbonLength;
+  }, 0);
 }
 
 module.exports = {
@@ -51,5 +57,6 @@ module.exports = {
   calculateSurfaceAreaOfBox,
   calculatePaperArea,
   calculateTotalPaperArea,
-  calculateRibbonLength
+  calculateRibbonLength,
+  calculateTotalRibbonLength
 }
