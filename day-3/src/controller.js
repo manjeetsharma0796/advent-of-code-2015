@@ -1,13 +1,20 @@
 const { Santa } = require("./santa");
 
 class Controller {
+  #count
+
   constructor(santa) {
     this.santa = santa;
     this.log = {};
+    this.#count = 0;
   }
 
-  #registerLogs() {
-    const { x, y } = this.santa[0].status;
+  #incrementCount() {
+    this.#count += 1;
+  }
+
+  #registerLogs(count) {
+    const { x, y } = this.santa[count].status;
     this.log[`${x},${y}`] = 'house';
   }
   navigate([...instructions]) {
@@ -22,7 +29,15 @@ class Controller {
     instructions.forEach((instruction) => {
       if (this.santa.length === 1) {
         directionGuide[instruction](this.santa[0]);
-        this.#registerLogs();
+        this.#registerLogs(0);
+      }
+
+      if (this.santa.length === 2) {
+        const currentSanta = this.#count % 2;
+        
+        directionGuide[instruction](this.santa[currentSanta]);
+        this.#registerLogs(currentSanta);
+        this.#incrementCount();
       }
     })
   }

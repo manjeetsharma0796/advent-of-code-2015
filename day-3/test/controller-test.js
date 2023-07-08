@@ -60,13 +60,26 @@ describe('Controller', () => {
       deepStrictEqual(actual, expected);
     });
 
-    it('Should navigate the Santa multiple instructions and records it in log', () => {
+    it('Should navigate the Santa multiple instructions and record logs in it', () => {
       const santa = new Santa();
       const elf = new Controller([santa]);
       elf.navigate('<>');
 
       const actual = elf.log;
       const expected = { '-1,0': 'house', '0,0': 'house' };
+
+      deepStrictEqual(actual, expected);
+    });
+
+    it('Should navigate Santas instructions and record logs in it', () => {
+      const santa = new Santa();
+      const santa1 = new Santa();
+
+      const elf = new Controller([santa, santa1]);
+      elf.navigate('<>');
+
+      const actual = elf.log;
+      const expected = { '-1,0': 'house', '1,0': 'house' };
 
       deepStrictEqual(actual, expected);
     });
