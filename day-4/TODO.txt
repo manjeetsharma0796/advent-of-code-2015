@@ -1,0 +1,40 @@
+what is hmac and why required by node:crypto
+
+what is secret, 
+
+what is update
+
+what is digest
+
+
+from README inputs what i am getting
+
+secretKey = abcdef;
+answer = 609043;
+
+so why 609043 is an answer 
+
+the reason is simple 
+when you combine the question and answer as a string and you see the md5 encrpted message 
+it will look somewhat below mentioned
+
+000001dbbfa3a5c83a2d506429c7b00e
+
+Notice there is leading 5 zeroes
+
+
+So I have been provided with secretkey
+and i have to find the answer which will lead to 5 zeroes in front of md5 hashing
+
+00000
+
+
+what can be the name of the function
+
+objective is to find the answer key 
+
+i give 'secretKey' and a hash instance 
+
+the function will be in loop until it get first 5 string as 0
+
+when the function get 5 zeroes it return with the answerkey which lead to such situation
