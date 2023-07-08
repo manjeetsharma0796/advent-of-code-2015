@@ -1,13 +1,13 @@
 const { describe, it } = require('node:test');
 const { deepStrictEqual } = require('assert');
 const { Santa } = require('../src/santa');
-const { Elf } = require('../src/elf');
+const { Controller } = require('../src/Controller');
 
-describe('Elf', () => {
+describe('Controller', () => {
   describe('navigate', () => {
     it('Should navigate the Santa to north when provided instruction is up', () => {
       const santa = new Santa();
-      const elf = new Elf(santa);
+      const elf = new Controller(santa);
       elf.navigate('^');
 
       const actual = santa.status;
@@ -18,7 +18,7 @@ describe('Elf', () => {
 
     it('Should navigate the Santa to south when provided instruction is down', () => {
       const santa = new Santa();
-      const elf = new Elf(santa);
+      const elf = new Controller(santa);
       elf.navigate('v');
 
       const actual = santa.status;
@@ -29,7 +29,7 @@ describe('Elf', () => {
 
     it('Should navigate the Santa to east when provided instruction is right', () => {
       const santa = new Santa();
-      const elf = new Elf(santa);
+      const elf = new Controller(santa);
       elf.navigate('>');
 
       const actual = santa.status;
@@ -38,10 +38,9 @@ describe('Elf', () => {
       deepStrictEqual(actual, expected);
     });
 
-
     it('Should navigate the Santa to west when provided instruction is left', () => {
       const santa = new Santa();
-      const elf = new Elf(santa);
+      const elf = new Controller(santa);
       elf.navigate('<');
 
       const actual = santa.status;
@@ -50,17 +49,38 @@ describe('Elf', () => {
       deepStrictEqual(actual, expected);
     });
 
+    it('Should navigate the Santa to west and register log when provided instruction is left', () => {
+      const santa = new Santa();
+      const elf = new Controller(santa);
+      elf.navigate('<');
 
+      const actual = elf.log;
+      const expected = { '-1,0': 'house' };
+
+      deepStrictEqual(actual, expected);
+    });
+
+    it('Should navigate the Santa multiple instructions and records it in log', () => {
+      const santa = new Santa();
+      const elf = new Controller(santa);
+      elf.navigate('<>');
+
+      const actual = elf.log;
+      const expected = { '-1,0': 'house', '0,0': 'house' };
+
+      deepStrictEqual(actual, expected);
+    });
   });
+
   describe('log', () => {
     it('Should be empty log when no instruction provided', () => {
       const santa = new Santa();
-      const elf = new Elf(santa);
+      const elf = new Controller(santa);
 
       const actual = elf.logs;
       const expected = {};
 
       deepStrictEqual(actual, expected);
     });
-  })
+  });
 });

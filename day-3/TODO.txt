@@ -7,3 +7,8 @@ There will be a person called Santa
 What can be the house name 
   houseName will be consist of coordinate
   houses
+
+
+[santa1, santa2]
+
+new Controller([santa1, santa2])

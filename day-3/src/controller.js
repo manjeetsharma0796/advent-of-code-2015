@@ -1,12 +1,17 @@
 const { Santa } = require("./santa");
 
-class Elf {
+class Controller {
   constructor(santa) {
     this.santa = santa;
     this.log = {};
   }
 
+  #registerLogs() {
+    const { x, y } = this.santa.status;
+    this.log[`${x},${y}`] = 'house';
+  }
   navigate([...instructions]) {
+
     const directionGuide = {
       '^': (santa) => { santa.moveUp() },
       '>': (santa) => { santa.moveRight() },
@@ -14,15 +19,16 @@ class Elf {
       'v': (santa) => { santa.moveDown() }
     };
 
-    for (const instruction of instructions) {
+    instructions.forEach((instruction) => {
       directionGuide[instruction](this.santa);
-    }
+      this.#registerLogs();
+    })
   }
 
-  get logs () {
+  get logs() {
     const log = this.log;
     return log;
   }
 }
 
-exports.Elf = Elf;
+exports.Controller = Controller;
