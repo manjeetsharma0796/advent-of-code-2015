@@ -1,6 +1,6 @@
 const fs = require('fs');
-const { Santa } = require('./src/santa');
-const { Controller } = require('./src/Controller');
+const { Santa } = require('./src/santa.js');
+const { Controller } = require('./src/controller.js');
 
 const partOne = () => {
   const rawInstructions = fs.readFileSync('./resources/instructions.txt', 'utf-8');
