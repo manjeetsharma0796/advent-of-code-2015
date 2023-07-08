@@ -17,12 +17,16 @@ const partTwo = () => {
   const roboSanta = new Santa();
 
   const elf = new Controller([santa, roboSanta]);
-
+  elf.navigate(rawInstructions);
+  return Object.keys(elf.logs).length
 }
 
 const main = () => {
-  const totalHouse = partOne();
-  console.log(totalHouse);
+  const totalHouseVisited1 = partOne();
+  const totalHouseVisited2 = partTwo();
+
+  console.log('Total Number of houses which santa visited at least one time ', totalHouseVisited1);
+  console.log('Total number of houses which santa and robo santa visited at least one time is ', totalHouseVisited2);
 }
 
 main();
