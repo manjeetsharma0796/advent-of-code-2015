@@ -5,8 +5,7 @@ const { Controller } = require('./src/Controller');
 const partOne = () => {
   const rawInstructions = fs.readFileSync('./resources/instructions.txt', 'utf-8');
   const santa = new Santa();
-  const elf = new Controller(santa);
-
+  const elf = new Controller([santa]);
 
   elf.navigate(rawInstructions);
   return Object.keys(elf.logs).length;
@@ -17,7 +16,7 @@ const partTwo = () => {
   const santa = new Santa();
   const roboSanta = new Santa();
 
-  const elf = new Controller(santa);
+  const elf = new Controller([santa, roboSanta]);
 
 }
 

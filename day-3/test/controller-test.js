@@ -1,13 +1,13 @@
 const { describe, it } = require('node:test');
 const { deepStrictEqual } = require('assert');
 const { Santa } = require('../src/santa');
-const { Controller } = require('../src/Controller');
+const { Controller } = require('../src/controller.js');
 
 describe('Controller', () => {
   describe('navigate', () => {
     it('Should navigate the Santa to north when provided instruction is up', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
       elf.navigate('^');
 
       const actual = santa.status;
@@ -18,7 +18,7 @@ describe('Controller', () => {
 
     it('Should navigate the Santa to south when provided instruction is down', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
       elf.navigate('v');
 
       const actual = santa.status;
@@ -29,7 +29,7 @@ describe('Controller', () => {
 
     it('Should navigate the Santa to east when provided instruction is right', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
       elf.navigate('>');
 
       const actual = santa.status;
@@ -40,7 +40,7 @@ describe('Controller', () => {
 
     it('Should navigate the Santa to west when provided instruction is left', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
       elf.navigate('<');
 
       const actual = santa.status;
@@ -51,7 +51,7 @@ describe('Controller', () => {
 
     it('Should navigate the Santa to west and register log when provided instruction is left', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
       elf.navigate('<');
 
       const actual = elf.log;
@@ -62,7 +62,7 @@ describe('Controller', () => {
 
     it('Should navigate the Santa multiple instructions and records it in log', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
       elf.navigate('<>');
 
       const actual = elf.log;
@@ -75,7 +75,7 @@ describe('Controller', () => {
   describe('log', () => {
     it('Should be empty log when no instruction provided', () => {
       const santa = new Santa();
-      const elf = new Controller(santa);
+      const elf = new Controller([santa]);
 
       const actual = elf.logs;
       const expected = {};

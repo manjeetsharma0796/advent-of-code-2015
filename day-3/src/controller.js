@@ -7,7 +7,7 @@ class Controller {
   }
 
   #registerLogs() {
-    const { x, y } = this.santa.status;
+    const { x, y } = this.santa[0].status;
     this.log[`${x},${y}`] = 'house';
   }
   navigate([...instructions]) {
@@ -20,8 +20,10 @@ class Controller {
     };
 
     instructions.forEach((instruction) => {
-      directionGuide[instruction](this.santa);
-      this.#registerLogs();
+      if (this.santa.length === 1) {
+        directionGuide[instruction](this.santa[0]);
+        this.#registerLogs();
+      }
     })
   }
 
