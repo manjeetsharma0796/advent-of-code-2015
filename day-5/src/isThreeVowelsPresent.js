@@ -44,7 +44,22 @@ const isAnyLetterRepeatInRow = (string) => {
   return false;
 }
 
+const isRestrictedStringPresent = (stringToCheck, restrictedSubstrings) => {
+  if (!stringToCheck) {
+    return false;
+  }
+
+  for (const restrictedSubstring of restrictedSubstrings) {
+    if (stringToCheck.includes(restrictedSubstring)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 module.exports = {
   isThreeVowelsPresent,
-  isAnyLetterRepeatInRow
+  isAnyLetterRepeatInRow,
+  isRestrictedStringPresent
 }
