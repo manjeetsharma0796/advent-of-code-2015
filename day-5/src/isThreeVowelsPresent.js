@@ -10,7 +10,8 @@ const isThreeVowelsPresent = (string) => {
     }
     stringSummary[letter] += 1;
     return stringSummary;
-  }, {})
+  }, {});
+
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   let vowelCount = 0;
 
@@ -58,8 +59,19 @@ const isRestrictedStringPresent = (stringToCheck, restrictedSubstrings) => {
   return false;
 }
 
-const countNiceStrings = () => {
-  return 0;
+const countNiceStrings = (string, restrictedSubstring) => {
+  if (!string) {
+    return 0;
+  }
+  let niceStringCount = 0;
+  const firstCriteria = isThreeVowelsPresent(string);
+  const secondCriteria = isAnyLetterRepeatInRow(string);
+  const thirdCriteria = !isRestrictedStringPresent(string, restrictedSubstring);
+
+  if (firstCriteria === secondCriteria === thirdCriteria) {
+    niceStringCount += 1;
+  }
+  return niceStringCount;
 }
 
 module.exports = {

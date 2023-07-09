@@ -56,6 +56,18 @@ describe('isRestrictedStringPresent', () => {
 
 describe('countNiceStrings', () => {
   it('Nice String count should be zero for empty string', () => {
-    assert.strictEqual(countNiceStrings(''), 0)
-  })
-})
+    assert.strictEqual(countNiceStrings('', ['ab', 'cd', 'pq', 'xy']), 0);
+  });
+
+  it('Nice String count should be zero for string provided that fails to meets all criteria', () => {
+    assert.strictEqual(countNiceStrings('', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings('jchzalrnumimnmhp', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings('haegwjzuvuyypxyu', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings('dvszwmarrgswjxmb', ['ab', 'cd', 'pq', 'xy']), 0);
+  });
+
+  it('Nice String count should be one for string that meets all criteria', () => {
+    assert.strictEqual(countNiceStrings('ugknbfddgicrmopn', ['ab', 'cd', 'pq', 'xy']), 1);
+    assert.strictEqual(countNiceStrings('aaa', ['ab', 'cd', 'pq', 'xy']), 1);
+  });
+});
