@@ -24,6 +24,23 @@ const isThreeVowelsPresent = (string) => {
 }
 
 const isAnyLetterRepeatInRow = (string) => {
+  if (!string) {
+    return false;
+  }
+
+  let letterIndex = 0;
+
+  while (letterIndex < string.length - 1) {
+    const currentLetter = string[letterIndex];
+    const succedingLetter = string[letterIndex + 1];
+
+    if (currentLetter === succedingLetter) {
+      return true;
+    }
+
+    letterIndex++;
+  }
+
   return false;
 }
 

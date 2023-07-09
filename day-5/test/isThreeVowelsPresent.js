@@ -28,8 +28,14 @@ describe('isAnyLetterRepeatInRow', () => {
   it('Should be false as no string provided', () => {
     assert.strictEqual(isAnyLetterRepeatInRow(), false);
   });
-  
+
   it('Should be false as string provided has no repeating letter in row', () => {
     assert.strictEqual(isAnyLetterRepeatInRow('seb'), false);
+  });
+
+  it('Should be true as string provided has repeating letter in row', () => {
+    assert.strictEqual(isAnyLetterRepeatInRow('sseb'), true);
+    assert.strictEqual(isAnyLetterRepeatInRow('sebb'), true);
+    assert.strictEqual(isAnyLetterRepeatInRow('seebb'), true);
   });
 })
