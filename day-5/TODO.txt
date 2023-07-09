@@ -1,0 +1,14 @@
+so top level function who
+
+  - isStringNice
+
+now how isStringNice will decide how
+
+  - turns out there is three criteria to pass
+  
+  [*]1.It contains at least three vowels
+  
+  [*]2.It contains at least one letter that appears twice in a row
+  
+  3. Restricted substring -
+    - ab, cd, pq, or xy
