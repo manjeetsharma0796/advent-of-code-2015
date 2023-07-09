@@ -11,11 +11,11 @@ const isThreeVowelsPresent = (string) => {
     stringSummary[letter] += 1;
     return stringSummary;
   }, {})
-  const vowels = ['a','e','i','o','u'];
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
   let vowelCount = 0;
 
   vowels.forEach((vowel) => {
-    if(stringSummary[vowel]) {
+    if (stringSummary[vowel]) {
       vowelCount += stringSummary[vowel];
     }
   })
@@ -23,4 +23,11 @@ const isThreeVowelsPresent = (string) => {
   return vowelCount < 3 ? false : true;
 }
 
-exports.isThreeVowelsPresent = isThreeVowelsPresent;
+const isAnyLetterRepeatInRow = (string) => {
+  return false;
+}
+
+module.exports = {
+  isThreeVowelsPresent,
+  isAnyLetterRepeatInRow
+}
