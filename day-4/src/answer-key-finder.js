@@ -8,8 +8,7 @@ const findAnswerKey = (secretKey, numberOfZeroesInFrontOfHash) => {
     myHash.update(secretKey + answerKey);
     
     const hash = (myHash.digest('hex'));
-    const firstFiveHashString = hash
-    .slice(0,numberOfZeroesInFrontOfHash);
+    const firstFiveHashString = hash.slice(0,numberOfZeroesInFrontOfHash);
     
     if(firstFiveHashString === '0'.repeat(numberOfZeroesInFrontOfHash)) {
       return answerKey;
