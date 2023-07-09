@@ -20,11 +20,7 @@ const isThreeVowelsPresent = (string) => {
     }
   })
 
-  if (vowelCount < 3) {
-    return false;
-  }
-
-  return true;
+  return vowelCount < 3 ? false : true;
 }
 
 exports.isThreeVowelsPresent = isThreeVowelsPresent;
