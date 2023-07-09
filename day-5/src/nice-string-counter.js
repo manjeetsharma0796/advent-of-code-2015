@@ -63,15 +63,21 @@ const countNiceString = (string, restrictedSubstring) => {
   if (!string) {
     return 0;
   }
-  let niceStringCount = 0;
+
   const firstCriteria = isThreeVowelsPresent(string);
   const secondCriteria = isAnyLetterRepeatInRow(string);
   const thirdCriteria = !isRestrictedStringPresent(string, restrictedSubstring);
 
-  if (firstCriteria === secondCriteria === thirdCriteria) {
-    niceStringCount += 1;
+  const allCriteriaMeet = [firstCriteria, secondCriteria, thirdCriteria]
+    .every((value) => {
+      return value;
+    });
+
+  if (allCriteriaMeet) {
+    return 1;
   }
-  return niceStringCount;
+
+  return 0;
 }
 
 module.exports = {
