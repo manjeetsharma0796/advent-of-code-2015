@@ -58,8 +58,13 @@ const isRestrictedStringPresent = (stringToCheck, restrictedSubstrings) => {
   return false;
 }
 
+const countNiceStrings = () => {
+  return 0;
+}
+
 module.exports = {
   isThreeVowelsPresent,
   isAnyLetterRepeatInRow,
-  isRestrictedStringPresent
+  isRestrictedStringPresent,
+  countNiceStrings
 }

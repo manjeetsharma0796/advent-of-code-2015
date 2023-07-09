@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('assert');
-const { isThreeVowelsPresent, isAnyLetterRepeatInRow, isRestrictedStringPresent } = require('../src/isThreeVowelsPresent');
+const { isThreeVowelsPresent, isAnyLetterRepeatInRow, isRestrictedStringPresent, countNiceStrings } = require('../src/isThreeVowelsPresent');
 
 describe('isThreeVowelsPresent', () => {
   it('Should be false as no string provided', () => {
@@ -53,3 +53,9 @@ describe('isRestrictedStringPresent', () => {
     assert.strictEqual(isRestrictedStringPresent('cxyd', ['ab', 'cd', 'pq', 'xy']), true);
   });
 });
+
+describe('countNiceStrings', () => {
+  it('Nice String count should be zero for empty string', () => {
+    assert.strictEqual(countNiceStrings(''), 0)
+  })
+})
