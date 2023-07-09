@@ -1,6 +1,6 @@
 const { describe, it } = require('node:test');
 const assert = require('assert');
-const { isThreeVowelsPresent, isAnyLetterRepeatInRow, isRestrictedStringPresent, countNiceStrings } = require('../src/isThreeVowelsPresent');
+const { isThreeVowelsPresent, isAnyLetterRepeatInRow, isRestrictedStringPresent, countNiceString } = require('../src/nice-string-counter');
 
 describe('isThreeVowelsPresent', () => {
   it('Should be false as no string provided', () => {
@@ -54,20 +54,20 @@ describe('isRestrictedStringPresent', () => {
   });
 });
 
-describe('countNiceStrings', () => {
+describe('countNiceString', () => {
   it('Nice String count should be zero for empty string', () => {
-    assert.strictEqual(countNiceStrings('', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceString('', ['ab', 'cd', 'pq', 'xy']), 0);
   });
 
   it('Nice String count should be zero for string provided that fails to meets all criteria', () => {
-    assert.strictEqual(countNiceStrings('', ['ab', 'cd', 'pq', 'xy']), 0);
-    assert.strictEqual(countNiceStrings('jchzalrnumimnmhp', ['ab', 'cd', 'pq', 'xy']), 0);
-    assert.strictEqual(countNiceStrings('haegwjzuvuyypxyu', ['ab', 'cd', 'pq', 'xy']), 0);
-    assert.strictEqual(countNiceStrings('dvszwmarrgswjxmb', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceString('', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceString('jchzalrnumimnmhp', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceString('haegwjzuvuyypxyu', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceString('dvszwmarrgswjxmb', ['ab', 'cd', 'pq', 'xy']), 0);
   });
 
   it('Nice String count should be one for string that meets all criteria', () => {
-    assert.strictEqual(countNiceStrings('ugknbfddgicrmopn', ['ab', 'cd', 'pq', 'xy']), 1);
-    assert.strictEqual(countNiceStrings('aaa', ['ab', 'cd', 'pq', 'xy']), 1);
+    assert.strictEqual(countNiceString('ugknbfddgicrmopn', ['ab', 'cd', 'pq', 'xy']), 1);
+    assert.strictEqual(countNiceString('aaa', ['ab', 'cd', 'pq', 'xy']), 1);
   });
 });
