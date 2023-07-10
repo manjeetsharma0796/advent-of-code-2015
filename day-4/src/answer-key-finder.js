@@ -1,20 +1,20 @@
 const { createHash } = require('node:crypto')
 
-const finsSuffixOfSecretKey = (secretKey, numberOfZeroesInFrontOfHash) => {
-  let answerKey = 1;
+const findSuffixOfSecretKey = (secretKey, numberOfZeroesInFrontOfHash) => {
+  let suffixOfSecretKey = 1;
 
   while (true) {
-    const myHash = createHash('md5');
-    myHash.update(secretKey + answerKey);
+    const hash = createHash('md5');
+    hash.update(secretKey + suffixOfSecretKey);
 
-    const hash = (myHash.digest('hex'));
+    const hashValue = (hash.digest('hex'));
 
-    if (hash.startsWith('0'.repeat(numberOfZeroesInFrontOfHash))) {
-      return answerKey;
+    if (hashValue.startsWith('0'.repeat(numberOfZeroesInFrontOfHash))) {
+      return suffixOfSecretKey;
     }
 
-    answerKey++;
+    suffixOfSecretKey++;
   }
 }
 
-exports.finsSuffixOfSecretKey = finsSuffixOfSecretKey;
+exports.findSuffixOfSecretKey = findSuffixOfSecretKey;
