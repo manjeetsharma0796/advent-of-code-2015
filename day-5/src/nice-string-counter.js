@@ -64,14 +64,14 @@ const isStringNice = (string, restrictedSubstring) => {
   return allCriteriaMeet;
 }
 
-const countNiceStrings = (string, restrictedSubstrings) => {
-  let niceStringsCount = 0;
-  
-  if (isStringNice(string, restrictedSubstrings)) {
-    niceStringsCount += 1;
-  }
+const countNiceStrings = (strings, restrictedSubstrings) => {
+  return strings.reduce((niceStringsCount, string) => {
+    if (isStringNice(string, restrictedSubstrings)) {
+      niceStringsCount += 1;
+    }
 
-  return niceStringsCount;
+    return niceStringsCount;
+  }, 0);
 }
 
 module.exports = {

@@ -81,6 +81,9 @@ describe('isStringNice', () => {
 
 describe('countNiceString', () => {
   it('count should be zero as the string provided is not nice', () => {
-    assert.strictEqual(countNiceStrings('', ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings([''], ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings(['jchzalrnumimnmhp'], ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings(['haegwjzuvuyypxyu'], ['ab', 'cd', 'pq', 'xy']), 0);
+    assert.strictEqual(countNiceStrings(['dvszwmarrgswjxmb'], ['ab', 'cd', 'pq', 'xy']), 0);
   });
 });
