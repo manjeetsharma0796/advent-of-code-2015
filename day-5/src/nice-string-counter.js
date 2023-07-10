@@ -74,10 +74,15 @@ const countNiceStrings = (strings, restrictedSubstrings) => {
   }, 0);
 }
 
+const isPairOfLettersRepeatedTwice = () => {
+  return false;
+}
+
 module.exports = {
   areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
   isAnyRestrictedSubstringPresent,
   isStringNice,
-  countNiceStrings
+  countNiceStrings,
+  isPairOfLettersRepeatedTwice
 }

@@ -5,7 +5,8 @@ const { areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
   isAnyRestrictedSubstringPresent,
   isStringNice,
-  countNiceStrings
+  countNiceStrings,
+  isPairOfLettersRepeatedTwice
 } = require('../src/nice-string-counter');
 
 describe('areThreeVowelsPresent', () => {
@@ -89,6 +90,14 @@ describe('countNiceString', () => {
 
   it('count should be non zero value as strings provided has nice strings', () => {
     assert.strictEqual(countNiceStrings(['ugknbfddgicrmopn', 'abckd'], ['ab', 'cd', 'pq', 'xy']), 1);
-    assert.strictEqual(countNiceStrings(['ugknbfddgicrmopn','aaaniio', 'abckd'], ['ab', 'cd', 'pq', 'xy']), 2);
-  }) 
+    assert.strictEqual(countNiceStrings(['ugknbfddgicrmopn', 'aaaniio', 'abckd'], ['ab', 'cd', 'pq', 'xy']), 2);
+  });
+});
+
+describe('isPairOfLettersRepeatedTwice', () => {
+  it('should be false as string provided is has no pair repetition', () => {
+    assert.strictEqual(isPairOfLettersRepeatedTwice('a'), false);
+    assert.strictEqual(isPairOfLettersRepeatedTwice('ac'), false);
+    assert.strictEqual(isPairOfLettersRepeatedTwice('aa'), false);
+  });
 });
