@@ -95,9 +95,16 @@ describe('countNiceString', () => {
 });
 
 describe('isPairOfLettersRepeatedTwice', () => {
-  it('should be false as string provided is has no pair repetition', () => {
+  it('should be false as string provided is has no pair of letters repeated', () => {
     assert.strictEqual(isPairOfLettersRepeatedTwice('a'), false);
     assert.strictEqual(isPairOfLettersRepeatedTwice('ac'), false);
     assert.strictEqual(isPairOfLettersRepeatedTwice('aa'), false);
+    assert.strictEqual(isPairOfLettersRepeatedTwice('aaa'), false);
+  });
+
+  it('should be true as string provided is has pair of letters repeated', () => {
+    assert.strictEqual(isPairOfLettersRepeatedTwice('aaaa'), true);
+    assert.strictEqual(isPairOfLettersRepeatedTwice('xyxy'), true);
+    assert.strictEqual(isPairOfLettersRepeatedTwice('aabcdefgaa'), true);
   });
 });

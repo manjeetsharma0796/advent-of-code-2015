@@ -74,8 +74,8 @@ const countNiceStrings = (strings, restrictedSubstrings) => {
   }, 0);
 }
 
-const isPairOfLettersRepeatedTwice = () => {
-  return false;
+const isPairOfLettersRepeatedTwice = (string) => {
+  return (/(..).*\1/).test(string);  
 }
 
 module.exports = {
