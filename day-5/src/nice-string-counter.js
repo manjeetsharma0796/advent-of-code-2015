@@ -90,6 +90,16 @@ const isStringNiceWithNewRule = (string) => {
   return criterias.every((criteria) => criteria);
 }
 
+const countNiceStringsWithNewRule = (strings) => {
+  return strings.reduce((niceStringsCount, string) => {
+    if (isStringNiceWithNewRule(string)) {
+      niceStringsCount += 1;
+    }
+
+    return niceStringsCount;
+  }, 0);
+}
+
 module.exports = {
   areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
@@ -98,5 +108,6 @@ module.exports = {
   countNiceStrings,
   isPairOfLettersRepeatedTwice,
   anyLetterRepeatedAfterALetter,
-  isStringNiceWithNewRule
+  isStringNiceWithNewRule,
+  countNiceStringsWithNewRule
 }

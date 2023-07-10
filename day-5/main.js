@@ -6,7 +6,7 @@ const main = () => {
 
   const strings = fileContent.split('\n');
   const niceStringsCount = countNiceStrings(strings, ['ab', 'cd', 'pq', 'xy']);
-
+  const niceStringWithNewRuleCount = countNiceStringsWithNewRule(strings);
   console.log('Part 1: Total nice string present is ', niceStringsCount);
 }
 

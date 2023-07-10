@@ -8,7 +8,8 @@ const { areThreeVowelsPresent,
   countNiceStrings,
   isPairOfLettersRepeatedTwice,
   anyLetterRepeatedAfterALetter,
-  isStringNiceWithNewRule
+  isStringNiceWithNewRule,
+  countNiceStringsWithNewRule
 } = require('../src/nice-string-counter');
 
 describe('areThreeVowelsPresent', () => {
@@ -129,9 +130,22 @@ describe('isStringNiceWithNewRule', () => {
   it('Should be true as string provided has a pair repeated and exactly one letter between them', () => {
     assert.strictEqual(isStringNiceWithNewRule('qjhvhtzxzqqjkmpb'), true);
     assert.strictEqual(isStringNiceWithNewRule('xxyxx'), true);
-  })
+  });
 
   it('Should be false because the string provided has no repeat with a single letter between them', () => {
     assert.strictEqual(isStringNiceWithNewRule('uurcxstgmygtbstg'), false);
-  })
-})
+    assert.strictEqual(isStringNiceWithNewRule('ieodomkazucvgmuy'), false);
+  });
+});
+
+describe('countNiceString', () => {
+  it('count should be zero as the string provided is not nice', () => {
+    assert.strictEqual(countNiceStringsWithNewRule([''],), 0);
+    assert.strictEqual(countNiceStringsWithNewRule(['uurcxstgmygtbstg', 'ieodomkazucvgmuy']), 0);
+  });
+
+  it('count should be non zero value as strings provided has nice strings', () => {
+    assert.strictEqual(countNiceStringsWithNewRule(['qjhvhtzxzqqjkmpb']), 1);
+    assert.strictEqual(countNiceStringsWithNewRule(['qjhvhtzxzqqjkmpb', 'xxyxx']), 2);
+  });
+});
