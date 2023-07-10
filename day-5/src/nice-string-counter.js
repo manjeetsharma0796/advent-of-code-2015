@@ -6,9 +6,10 @@ const isThreeVowelsPresent = (string) => {
   const stringSummary = [...string].reduce((stringSummary, letter) => {
     if (stringSummary[letter] === undefined) {
       stringSummary[letter] = 1;
-      return stringSummary;
+    } else {
+      stringSummary[letter] += 1;
     }
-    stringSummary[letter] += 1;
+    
     return stringSummary;
   }, {});
 
@@ -25,9 +26,7 @@ const isThreeVowelsPresent = (string) => {
 }
 
 const isAnyLetterRepeatInRow = (string) => {
-  if (!string) {
-    return false;
-  }
+  if (!string) return false;
 
   let letterIndex = 0;
 
@@ -46,38 +45,23 @@ const isAnyLetterRepeatInRow = (string) => {
 }
 
 const isRestrictedStringPresent = (stringToCheck, restrictedSubstrings) => {
-  if (!stringToCheck) {
-    return false;
-  }
+  if (!stringToCheck) return false;
 
-  for (const restrictedSubstring of restrictedSubstrings) {
-    if (stringToCheck.includes(restrictedSubstring)) {
-      return true;
-    }
-  }
-
-  return false;
+  return restrictedSubstrings.some((subString) => stringToCheck.includes(subString));
 }
 
 const countNiceString = (string, restrictedSubstring) => {
-  if (!string) {
-    return 0;
-  }
+  if (!string) return false;
 
   const firstCriteria = isThreeVowelsPresent(string);
   const secondCriteria = isAnyLetterRepeatInRow(string);
   const thirdCriteria = !isRestrictedStringPresent(string, restrictedSubstring);
 
-  const allCriteriaMeet = [firstCriteria, secondCriteria, thirdCriteria]
-    .every((value) => {
-      return value;
-    });
+  const criterias = [firstCriteria, secondCriteria, thirdCriteria];
 
-  if (allCriteriaMeet) {
-    return 1;
-  }
+  const allCriteriaMeet = criterias.every((value) => value);
 
-  return 0;
+  return allCriteriaMeet;
 }
 
 module.exports = {
