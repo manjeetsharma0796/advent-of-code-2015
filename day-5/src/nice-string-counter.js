@@ -44,7 +44,7 @@ const isAnyLetterRepeatInRow = (string) => {
   return false;
 }
 
-const isRestrictedSubstringPresent = (stringToCheck, restrictedSubstrings) => {
+const isAnyRestrictedSubstringPresent = (stringToCheck, restrictedSubstrings) => {
   if (!stringToCheck) return false;
 
   return restrictedSubstrings.some((subString) => stringToCheck.includes(subString));
@@ -55,7 +55,7 @@ const isStringNice = (string, restrictedSubstring) => {
 
   const firstCriteria = areThreeVowelsPresent(string);
   const secondCriteria = isAnyLetterRepeatInRow(string);
-  const thirdCriteria = !isRestrictedSubstringPresent(string, restrictedSubstring);
+  const thirdCriteria = !isAnyRestrictedSubstringPresent(string, restrictedSubstring);
 
   const criterias = [firstCriteria, secondCriteria, thirdCriteria];
 
@@ -77,7 +77,7 @@ const countNiceStrings = (strings, restrictedSubstrings) => {
 module.exports = {
   areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
-  isRestrictedSubstringPresent,
+  isAnyRestrictedSubstringPresent,
   isStringNice,
   countNiceStrings
 }

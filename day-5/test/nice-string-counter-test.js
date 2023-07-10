@@ -3,7 +3,7 @@ const assert = require('assert');
 
 const { areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
-  isRestrictedSubstringPresent,
+  isAnyRestrictedSubstringPresent,
   isStringNice,
   countNiceStrings
 } = require('../src/nice-string-counter');
@@ -47,17 +47,17 @@ describe('isAnyLetterRepeatInRow', () => {
   });
 });
 
-describe('isRestrictedSubstringPresent', () => {
+describe('isAnyRestrictedSubstringPresent', () => {
   it('Should be false as string provided has no restricted substring', () => {
-    assert.strictEqual(isRestrictedSubstringPresent('', ['ab', 'cd', 'pq', 'xy']), false);
-    assert.strictEqual(isRestrictedSubstringPresent('aob', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isAnyRestrictedSubstringPresent('', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isAnyRestrictedSubstringPresent('aob', ['ab', 'cd', 'pq', 'xy']), false);
   });
 
   it('Should be true as string provided has restricted substring', () => {
-    assert.strictEqual(isRestrictedSubstringPresent('ab', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(isRestrictedSubstringPresent('cicd', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(isRestrictedSubstringPresent('cpqi', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(isRestrictedSubstringPresent('cxyd', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isAnyRestrictedSubstringPresent('ab', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isAnyRestrictedSubstringPresent('cicd', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isAnyRestrictedSubstringPresent('cpqi', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isAnyRestrictedSubstringPresent('cxyd', ['ab', 'cd', 'pq', 'xy']), true);
   });
 });
 
