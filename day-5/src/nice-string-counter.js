@@ -78,11 +78,25 @@ const isPairOfLettersRepeatedTwice = (string) => {
   return (/(..).*\1/).test(string);  
 }
 
+const anyLetterRepeatedAfterALetter = (string) => {
+  return (/(.).\1/).test(string);
+}
+
+const isStringNiceWithNewRule = (string) => {
+  const firstCriteria = isPairOfLettersRepeatedTwice(string);
+  const secondCriteria = anyLetterRepeatedAfterALetter(string);
+  const criterias = [firstCriteria, secondCriteria];
+
+  return criterias.every((criteria) => criteria);
+}
+
 module.exports = {
   areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
   isAnyRestrictedSubstringPresent,
   isStringNice,
   countNiceStrings,
-  isPairOfLettersRepeatedTwice
+  isPairOfLettersRepeatedTwice,
+  anyLetterRepeatedAfterALetter,
+  isStringNiceWithNewRule
 }

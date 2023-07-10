@@ -6,7 +6,9 @@ const { areThreeVowelsPresent,
   isAnyRestrictedSubstringPresent,
   isStringNice,
   countNiceStrings,
-  isPairOfLettersRepeatedTwice
+  isPairOfLettersRepeatedTwice,
+  anyLetterRepeatedAfterALetter,
+  isStringNiceWithNewRule
 } = require('../src/nice-string-counter');
 
 describe('areThreeVowelsPresent', () => {
@@ -108,3 +110,28 @@ describe('isPairOfLettersRepeatedTwice', () => {
     assert.strictEqual(isPairOfLettersRepeatedTwice('aabcdefgaa'), true);
   });
 });
+
+describe('anyLetterRepeatedAfterALetter', () => {
+  it('Should be false as string provided has no letter repeated after a letter', () => {
+    assert.strictEqual(anyLetterRepeatedAfterALetter('a'), false);
+    assert.strictEqual(anyLetterRepeatedAfterALetter('aa'), false);
+    assert.strictEqual(anyLetterRepeatedAfterALetter('aabca'), false);
+  });
+
+  it('Should be true as string provided has letter repeated after a letter', () => {
+    assert.strictEqual(anyLetterRepeatedAfterALetter('aba'), true);
+    assert.strictEqual(anyLetterRepeatedAfterALetter('abcdefeghi'), true);
+    assert.strictEqual(anyLetterRepeatedAfterALetter('qjhvhtzxzqqjkmpb'), true);
+  });
+});
+
+describe('isStringNiceWithNewRule', () => {
+  it('Should be true as string provided has a pair repeated and exactly one letter between them', () => {
+    assert.strictEqual(isStringNiceWithNewRule('qjhvhtzxzqqjkmpb'), true);
+    assert.strictEqual(isStringNiceWithNewRule('xxyxx'), true);
+  })
+
+  it('Should be false because the string provided has no repeat with a single letter between them', () => {
+    assert.strictEqual(isStringNiceWithNewRule('uurcxstgmygtbstg'), false);
+  })
+})
