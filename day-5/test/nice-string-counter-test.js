@@ -1,9 +1,10 @@
 const { describe, it } = require('node:test');
 const assert = require('assert');
+
 const { isThreeVowelsPresent,
   isAnyLetterRepeatInRow,
-  isRestrictedStringPresent,
-  countNiceString
+  isRestrictedSubstringPresent,
+  isStringNice
 } = require('../src/nice-string-counter');
 
 describe('isThreeVowelsPresent', () => {
@@ -45,34 +46,34 @@ describe('isAnyLetterRepeatInRow', () => {
   });
 });
 
-describe('isRestrictedStringPresent', () => {
+describe('isRestrictedSubstringPresent', () => {
   it('Should be false as string provided has no restricted substring', () => {
-    assert.strictEqual(isRestrictedStringPresent('', ['ab', 'cd', 'pq', 'xy']), false);
-    assert.strictEqual(isRestrictedStringPresent('aob', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isRestrictedSubstringPresent('', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isRestrictedSubstringPresent('aob', ['ab', 'cd', 'pq', 'xy']), false);
   });
 
   it('Should be true as string provided has restricted substring', () => {
-    assert.strictEqual(isRestrictedStringPresent('ab', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(isRestrictedStringPresent('cicd', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(isRestrictedStringPresent('cpqi', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(isRestrictedStringPresent('cxyd', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isRestrictedSubstringPresent('ab', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isRestrictedSubstringPresent('cicd', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isRestrictedSubstringPresent('cpqi', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isRestrictedSubstringPresent('cxyd', ['ab', 'cd', 'pq', 'xy']), true);
   });
 });
 
-describe('countNiceString', () => {
+describe('isStringNice', () => {
   it('Nice String count should be zero for empty string', () => {
-    assert.strictEqual(countNiceString('', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isStringNice('', ['ab', 'cd', 'pq', 'xy']), false);
   });
 
   it('Nice String count should be zero for string provided that fails to meets all criteria', () => {
-    assert.strictEqual(countNiceString('', ['ab', 'cd', 'pq', 'xy']), false);
-    assert.strictEqual(countNiceString('jchzalrnumimnmhp', ['ab', 'cd', 'pq', 'xy']), false);
-    assert.strictEqual(countNiceString('haegwjzuvuyypxyu', ['ab', 'cd', 'pq', 'xy']), false);
-    assert.strictEqual(countNiceString('dvszwmarrgswjxmb', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isStringNice('', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isStringNice('jchzalrnumimnmhp', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isStringNice('haegwjzuvuyypxyu', ['ab', 'cd', 'pq', 'xy']), false);
+    assert.strictEqual(isStringNice('dvszwmarrgswjxmb', ['ab', 'cd', 'pq', 'xy']), false);
   });
 
   it('Nice String count should be one for string that meets all criteria', () => {
-    assert.strictEqual(countNiceString('ugknbfddgicrmopn', ['ab', 'cd', 'pq', 'xy']), true);
-    assert.strictEqual(countNiceString('aaa', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isStringNice('ugknbfddgicrmopn', ['ab', 'cd', 'pq', 'xy']), true);
+    assert.strictEqual(isStringNice('aaa', ['ab', 'cd', 'pq', 'xy']), true);
   });
 });
