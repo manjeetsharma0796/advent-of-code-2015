@@ -1,16 +1,13 @@
 const fs = require('fs');
-const { isStringNice } = require("./src/nice-string-counter");
+const { isStringNice, countNiceStrings } = require("./src/nice-string-counter");
 
 const main = () => {
-  const rawStrings = fs.readFileSync('./resources/strings-input.txt', 'utf-8');
+  const fileContent = fs.readFileSync('./resources/strings-input.txt', 'utf-8');
 
-  const strings = rawStrings.split('\n');
-  const niceStringsCount = strings.reduce((count, string) => {
-    count += isStringNice(string, ['ab', 'cd', 'pq', 'xy']);
-    return count;
-  }, 0);
+  const strings = fileContent.split('\n');
+  const niceStringsCount = countNiceStrings(strings, ['ab', 'cd', 'pq', 'xy']);
 
-  console.log('Total nice string present is ', niceStringsCount);
+  console.log('Part 1: Total nice string present is ', niceStringsCount);
 }
 
 main();
