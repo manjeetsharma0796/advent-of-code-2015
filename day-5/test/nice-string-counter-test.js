@@ -1,31 +1,32 @@
 const { describe, it } = require('node:test');
 const assert = require('assert');
 
-const { isThreeVowelsPresent,
+const { areThreeVowelsPresent,
   isAnyLetterRepeatInRow,
   isRestrictedSubstringPresent,
-  isStringNice
+  isStringNice,
+  countNiceStrings
 } = require('../src/nice-string-counter');
 
-describe('isThreeVowelsPresent', () => {
+describe('areThreeVowelsPresent', () => {
   it('Should be false as no string provided', () => {
-    assert.strictEqual(isThreeVowelsPresent(), false);
+    assert.strictEqual(areThreeVowelsPresent(), false);
   });
 
   it('Should be false as string provided has no vowels', () => {
-    assert.strictEqual(isThreeVowelsPresent('bc'), false);
+    assert.strictEqual(areThreeVowelsPresent('bc'), false);
   });
 
   it('Should be false as string provided has two vowels only', () => {
-    assert.strictEqual(isThreeVowelsPresent('aep'), false);
+    assert.strictEqual(areThreeVowelsPresent('aep'), false);
   });
 
   it('Should be true as string provided has three vowels only', () => {
-    assert.strictEqual(isThreeVowelsPresent('aepo'), true);
+    assert.strictEqual(areThreeVowelsPresent('aepo'), true);
   });
 
   it('Should be true as string provided has three identical vowels', () => {
-    assert.strictEqual(isThreeVowelsPresent('aaa'), true);
+    assert.strictEqual(areThreeVowelsPresent('aaa'), true);
   });
 });
 
@@ -75,5 +76,11 @@ describe('isStringNice', () => {
   it('Nice String count should be one for string that meets all criteria', () => {
     assert.strictEqual(isStringNice('ugknbfddgicrmopn', ['ab', 'cd', 'pq', 'xy']), true);
     assert.strictEqual(isStringNice('aaa', ['ab', 'cd', 'pq', 'xy']), true);
+  });
+});
+
+describe('countNiceString', () => {
+  it('count should be zero as the string provided is not nice', () => {
+    assert.strictEqual(countNiceStrings('', ['ab', 'cd', 'pq', 'xy']), 0);
   });
 });
