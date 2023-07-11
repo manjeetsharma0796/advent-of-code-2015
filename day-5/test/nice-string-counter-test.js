@@ -138,7 +138,7 @@ describe('isStringNiceWithNewRule', () => {
   });
 });
 
-describe('countNiceString', () => {
+describe('countNiceStringWithNewRule', () => {
   it('count should be zero as the string provided is not nice', () => {
     assert.strictEqual(countNiceStringsWithNewRule([''],), 0);
     assert.strictEqual(countNiceStringsWithNewRule(['uurcxstgmygtbstg', 'ieodomkazucvgmuy']), 0);
