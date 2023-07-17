@@ -1,10 +1,10 @@
-const { describe, it } = require('node:test');
-const { deepStrictEqual } = require('assert');
-const { Santa } = require('../src/santa');
+const { describe, it } = require("node:test");
+const { deepStrictEqual } = require("assert");
+const { Santa } = require("../src/santa");
 
-describe('Santa', () => {
-  describe('status', () => {
-    it('Should give status of santa', () => {
+describe("Santa", () => {
+  describe("status", () => {
+    it("Should give status of santa", () => {
       const santa = new Santa();
 
       const actual = santa.status;
@@ -14,8 +14,8 @@ describe('Santa', () => {
     });
   });
 
-  describe('moveUp', () => {
-    it('Should move santa to north direction', () => {
+  describe("moveUp", () => {
+    it("Should move santa to north direction", () => {
       const santa = new Santa();
       santa.moveUp();
 
@@ -25,7 +25,7 @@ describe('Santa', () => {
       deepStrictEqual(actual, expected);
     });
 
-    it('Should move santa to north direction twice', () => {
+    it("Should move santa to north direction twice", () => {
       const santa = new Santa();
       santa.moveUp();
       santa.moveUp();
@@ -37,8 +37,8 @@ describe('Santa', () => {
     });
   });
 
-  describe('moveDown', () => {
-    it('Should move santa to south direction', () => {
+  describe("moveDown", () => {
+    it("Should move santa to south direction", () => {
       const santa = new Santa();
       santa.moveDown();
 
@@ -48,7 +48,7 @@ describe('Santa', () => {
       deepStrictEqual(actual, expected);
     });
 
-    it('Should move santa to south direction twice', () => {
+    it("Should move santa to south direction twice", () => {
       const santa = new Santa();
       santa.moveDown();
       santa.moveDown();
@@ -60,8 +60,8 @@ describe('Santa', () => {
     });
   });
 
-  describe('moveRight', () => {
-    it('Should move santa to east direction', () => {
+  describe("moveRight", () => {
+    it("Should move santa to east direction", () => {
       const santa = new Santa();
       santa.moveRight();
 
@@ -71,7 +71,7 @@ describe('Santa', () => {
       deepStrictEqual(actual, expected);
     });
 
-    it('Should move santa to east direction twice', () => {
+    it("Should move santa to east direction twice", () => {
       const santa = new Santa();
       santa.moveRight();
       santa.moveRight();
@@ -83,8 +83,8 @@ describe('Santa', () => {
     });
   });
 
-  describe('moveLeft', () => {
-    it('Should move santa to west direction', () => {
+  describe("moveLeft", () => {
+    it("Should move santa to west direction", () => {
       const santa = new Santa();
       santa.moveLeft();
 
@@ -94,7 +94,7 @@ describe('Santa', () => {
       deepStrictEqual(actual, expected);
     });
 
-    it('Should move santa to west direction twice', () => {
+    it("Should move santa to west direction twice", () => {
       const santa = new Santa();
       santa.moveLeft();
       santa.moveLeft();

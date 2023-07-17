@@ -3,27 +3,26 @@ const areThreeVowelsPresent = (string) => {
     return false;
   }
 
-  const stringSummary = [...string].reduce((stringSummary, letter) => {
+  const stringSummary = {};
+  for (const letter of [...string]) {
     if (stringSummary[letter] === undefined) {
       stringSummary[letter] = 1;
     } else {
       stringSummary[letter] += 1;
     }
+  }
 
-    return stringSummary;
-  }, {});
-
-  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  const vowels = ["a", "e", "i", "o", "u"];
   let vowelCount = 0;
 
   vowels.forEach((vowel) => {
     if (stringSummary[vowel]) {
       vowelCount += stringSummary[vowel];
     }
-  })
+  });
 
   return vowelCount < 3 ? false : true;
-}
+};
 
 const isAnyLetterRepeatInRow = (string) => {
   if (!string) return false;
@@ -42,13 +41,13 @@ const isAnyLetterRepeatInRow = (string) => {
   }
 
   return false;
-}
+};
 
 const isAnyRestrictedSubstringPresent = (stringToCheck, restrictedSubstrings) => {
   if (!stringToCheck) return false;
 
   return restrictedSubstrings.some((subString) => stringToCheck.includes(subString));
-}
+};
 
 const isStringNice = (string, restrictedSubstring) => {
   if (!string) return false;
@@ -62,25 +61,26 @@ const isStringNice = (string, restrictedSubstring) => {
   const allCriteriaMeet = criterias.every((value) => value);
 
   return allCriteriaMeet;
-}
+};
 
 const countNiceStrings = (strings, restrictedSubstrings) => {
-  return strings.reduce((niceStringsCount, string) => {
+  let niceStringsCount = 0;
+
+  for (const string of strings) {
     if (isStringNice(string, restrictedSubstrings)) {
       niceStringsCount += 1;
     }
-
-    return niceStringsCount;
-  }, 0);
-}
+  }
+  return niceStringsCount;
+};
 
 const isPairOfLettersRepeatedTwice = (string) => {
-  return (/(..).*\1/).test(string);  
-}
+  return (/(..).*\1/).test(string);
+};
 
 const anyLetterRepeatedAfterALetter = (string) => {
   return (/(.).\1/).test(string);
-}
+};
 
 const isStringNiceWithNewRule = (string) => {
   const firstCriteria = isPairOfLettersRepeatedTwice(string);
@@ -88,17 +88,11 @@ const isStringNiceWithNewRule = (string) => {
   const criterias = [firstCriteria, secondCriteria];
 
   return criterias.every((criteria) => criteria);
-}
+};
 
 const countNiceStringsWithNewRule = (strings) => {
-  return strings.reduce((niceStringsCount, string) => {
-    if (isStringNiceWithNewRule(string)) {
-      niceStringsCount += 1;
-    }
-
-    return niceStringsCount;
-  }, 0);
-}
+  return strings.filter(isStringNiceWithNewRule).length;
+};
 
 module.exports = {
   areThreeVowelsPresent,
@@ -110,4 +104,4 @@ module.exports = {
   anyLetterRepeatedAfterALetter,
   isStringNiceWithNewRule,
   countNiceStringsWithNewRule
-}
+};
